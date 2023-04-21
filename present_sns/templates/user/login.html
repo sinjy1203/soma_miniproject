@@ -1,0 +1,49 @@
+{% comment %} {% extends 'nav.html' %}
+{% block style%}
+{% endblock%}
+
+{% block content%}
+<h1>1번쨰12345345431232341414</h1>
+
+{% endblock%} {% endcomment %}
+
+{% comment %} 안범기 {% endcomment %}
+{% comment %} 9/30 12:13수정 loginWindow 이미지수정 {% endcomment %}
+{% comment %} 상동 block 태그 제거 {% endcomment %}
+{% comment %} git  {% endcomment %}
+<!DOCTYPE html>
+{% load static %}    
+<html lang="ko">
+<head></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8번방의 선물</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" /> 
+    {% comment %} <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> {% endcomment %}
+    <script src="https://kit.fontawesome.com/c949f64c3b.js" crossorigin="anonymous"></script>
+    </head>
+<body>
+    <form class ="form-login" method="POST" action="/login/">
+        {% csrf_token %}  
+        {% comment %} 서버에 보내줄 정보들을 form태그 에 담음     {% endcomment %}
+        <div class="contentsWrap">
+            <div class="loginWindow">
+                <i style="font-size:100px;  " class="fa-brands fa-instagram"></i>
+                <input type="text" placeholder="id" class="inlineToBlock" id="username" name="username">
+                <input type="password" placeholder="pw" class="inlineToBlock" id="userpw" name="userpw">
+            <button class="inlineToBlock ordinaryLogin unactivatedLoginColor" type="submit">로그인</button>
+        {% if error %}
+            <div class='alert alert-danger' role='alert'>
+                {{ error }}
+            </div>
+        {% endif %}
+    </form> 
+    </div>
+    <div class="haveAccount">
+        <p>계정이 없으신가요?
+          <a href="/signup" class="noneunderline">가입하기</a>
+        </p>
+    </div>
+  </div>
+</body>
+</html>
