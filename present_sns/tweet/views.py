@@ -76,7 +76,9 @@ def user_profile(request):
 class UploadTweet(APIView):
     def post(self, request):
         #파일 불러오기
-        file = request.FILES['file']
+        # file = request.FILES['file']
+        file = request.FILES.get('file','.jpg')#chjung
+
         # 고유아이디 값을 주기 위해 uuid를 사용함(파이슨에서 사용하는 문법)
         uuid_name = uuid4().hex
         save_path = os.path.join(MEDIA_ROOT, uuid_name)
