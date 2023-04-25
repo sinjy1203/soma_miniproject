@@ -83,8 +83,11 @@ class UploadTweet(APIView):
         uuid_name = uuid4().hex
         save_path = os.path.join(MEDIA_ROOT, uuid_name)
         with open(save_path, 'wb+') as destination:  #파일을 저장,open이 저장 경로
-            for chunk in file.chunks():
-                destination.write(chunk)
+            if type(file) == str:
+                destination.write(file.encode())
+            else:
+                for chunk in file.chunks():
+                    destination.write(chunk)
         
         tweet_img = uuid_name #업로드 이미지
         content = request.data.get('content')
